@@ -41,6 +41,14 @@ function App() {
     const [wicket, setwicket] = useState(false);
     const [showstats, setshowstats] = useState(false);
     const [reset,setreset]=useState(false);
+    if(SyncStorage.get('num-pla')!=null)
+    {
+    aa.num_played=SyncStorage.get('num-pla');
+    aa.num_won=SyncStorage.get('num-won');
+    aa.num_lost=SyncStorage.get('num-lost');
+    aa.num_drawn=SyncStorage.get('num-drawn');
+    aa.percent_won = ((SyncStorage.get('num-won') / SyncStorage.get('num-pla')) * 100).toFixed(2);
+    }
 
     useEffect(()=>
     {
@@ -96,7 +104,7 @@ function App() {
 
 
     useEffect(() => {
-        if (aa.num_played != 0)
+        if (aa.percent_won != 0)
             aa.percent_won = ((aa.num_won / aa.num_played) * 100).toFixed(2);
 
         else
@@ -156,6 +164,7 @@ function App() {
         aa.num_played=SyncStorage.get('num-pla');
              SyncStorage.set('num-won',aa.num_won);
         aa.num_won=SyncStorage.get('num-won');
+        aa.percent_won=SyncStorage.get('per-won');
             tossdefault();
         }
 
@@ -171,6 +180,7 @@ function App() {
         aa.num_played=SyncStorage.get('num-pla');
              SyncStorage.set('num-lost',aa.num_lost);
         aa.num_lost=SyncStorage.get('num-lost');
+        aa.percent_won=SyncStorage.get('per-won');
             tossdefault();
         }
 
@@ -224,6 +234,7 @@ function App() {
         aa.num_played=SyncStorage.get('num-pla');
                     SyncStorage.set('num-lost',aa.num_lost);
         aa.num_lost=SyncStorage.get('num-lost');
+        aa.percent_won=SyncStorage.get('per-won');
                 }
 
 
@@ -235,6 +246,7 @@ function App() {
         aa.num_played=SyncStorage.get('num-pla');
                     SyncStorage.set('num-drawn',aa.num_drawn);
         aa.num_drawn=SyncStorage.get('num-drawn');
+        aa.percent_won=SyncStorage.get('per-won');
                 }
                 tossdefault();
             }
@@ -260,6 +272,7 @@ function App() {
         aa.num_played=SyncStorage.get('num-pla');
                     SyncStorage.set('num-won',aa.num_won);
         aa.num_won=SyncStorage.get('num-won');
+        aa.percent_won=SyncStorage.get('per-won');
                 }
 
                 else if (score == firstInningsScore) {
@@ -270,6 +283,7 @@ function App() {
         aa.num_played=SyncStorage.get('num-pla');
                     SyncStorage.set('num-drawn',aa.num_drawn);
         aa.num_drawn=SyncStorage.get('num-drawn');
+        aa.percent_won=SyncStorage.get('per-won');
                 }
                 tossdefault();
             }
@@ -344,11 +358,11 @@ function App() {
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
 
-                        <Text style={styles.modalText}>Number of matches played: {(aa.num_played==null)?0:SyncStorage.get('num-pla')}</Text>
-                        <Text style={styles.modalText}>Number of matches won: {(aa.num_won==null)?0:SyncStorage.get('num-won')}</Text>
-                        <Text style={styles.modalText}>Number of matches lost: {(aa.num_lost==null)?0:SyncStorage.get('num-lost')}</Text>
-                        <Text style={styles.modalText}>Number of matches drawn: {(aa.num_drawn==null)?0:SyncStorage.get('num-drawn')}</Text>
-                        <Text style={styles.modalText}>Win Percentage: {(aa.percent_won==null)?0.00:SyncStorage.get('per-won')} %</Text>
+                        <Text style={styles.modalText}>Number of matches played: {(aa.num_played==0)?0:SyncStorage.get('num-pla')}</Text>
+                        <Text style={styles.modalText}>Number of matches won: {(aa.num_won==0)?0:SyncStorage.get('num-won')}</Text>
+                        <Text style={styles.modalText}>Number of matches lost: {(aa.num_lost==0)?0:SyncStorage.get('num-lost')}</Text>
+                        <Text style={styles.modalText}>Number of matches drawn: {(aa.num_drawn==0)?0:SyncStorage.get('num-drawn')}</Text>
+                        <Text style={styles.modalText}>Win Percentage: {(aa.num_played==0)?((0.00).toFixed(2)):((aa.num_won / aa.num_played) * 100).toFixed(2)} %</Text>
                         <View style={styles.buttonContainer}>
                         <Pressable
                             style={[styles.buttonforclosing, styles.buttonClose]}
@@ -737,3 +751,15 @@ const styles = StyleSheet.create({
 
 // Export the App component as default
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
