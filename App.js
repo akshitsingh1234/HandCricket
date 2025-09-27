@@ -40,6 +40,7 @@ function App() {
     const [result, setresult] = useState(null);
     const [wicket, setwicket] = useState(false);
     const [showstats, setshowstats] = useState(false);
+    const [tosswonchoice,settosswonchoice]=useState(true);
     const [reset,setreset]=useState(false);
     if(SyncStorage.get('num-pla')!=null)
     {
@@ -58,6 +59,7 @@ function App() {
             setreset(false);
         }
     },[reset]);
+
 
     useEffect(() => {
         const initializeSyncStorage = async () => {
@@ -302,6 +304,7 @@ function App() {
             if ((numbr + compChoicetoss) % 2 == 0)
                 if (decisiontaken === "EVEN") {
                     settosswon(true);
+                    settosswonchoice(false);
                     settosslost(false);
                 }
                 else {
@@ -311,6 +314,7 @@ function App() {
             if ((numbr + compChoicetoss) % 2 != 0)
                 if (decisiontaken === "ODD") {
                     settosswon(true);
+                    settosswonchoice(false);
                     settosslost(false);
                 }
 
@@ -472,6 +476,7 @@ function App() {
                             setinnings("First");
                             setplayerDecision("Batting");
                             settosstime(false);
+                            settosswonchoice(true);
                         } }
                     >
                         <Text style={styles.buttonText}>
@@ -486,6 +491,7 @@ function App() {
                             setinnings("First");
                             setplayerDecision("Bowling");
                             settosstime(false);
+                            settosswonchoice(true);
                         } }>
                         <Text style={styles.buttonText}>
                             Bowling
@@ -511,7 +517,7 @@ function App() {
                 <TouchableOpacity
                     style={styles.button}
                     onPress={() => {
-                        (tossSideSelected) && ((tosstime) ? oneoffdisplay(1) : decision(1));
+                        (tossSideSelected) && (tosswonchoice) && ((tosstime) ? oneoffdisplay(1) : decision(1));
 
                     } } // Player chooses 1
                 >
@@ -522,7 +528,7 @@ function App() {
                 <TouchableOpacity
                     style={styles.button}
                     onPress={() => {
-                        (tossSideSelected) && ((tosstime) ? oneoffdisplay(2) : decision(2));
+                        (tossSideSelected) && (tosswonchoice) && ((tosstime) ? oneoffdisplay(2) : decision(2));
 
                     } } // Player chooses 2
                 >
@@ -533,8 +539,7 @@ function App() {
                 <TouchableOpacity
                     style={styles.button}
                     onPress={() => {
-                        (tossSideSelected) && ((tosstime) ? oneoffdisplay(3) : decision(3));
-
+                        (tossSideSelected) && (tosswonchoice) && ((tosstime) ? oneoffdisplay(3) : decision(3));
                     } } // Player chooses 3
                 >
                     <Text style={styles.buttonText}>
@@ -546,7 +551,7 @@ function App() {
                 <TouchableOpacity
                     style={styles.button}
                     onPress={() => {
-                        (tossSideSelected) && ((tosstime) ? oneoffdisplay(4) : decision(4));
+                        (tossSideSelected) && (tosswonchoice) && ((tosstime) ? oneoffdisplay(4) : decision(4));
 
                     } } // Player chooses 4
                 >
@@ -557,7 +562,7 @@ function App() {
                 <TouchableOpacity
                     style={styles.button}
                     onPress={() => {
-                        (tossSideSelected) && ((tosstime) ? oneoffdisplay(5) : decision(5));
+                        (tossSideSelected) && (tosswonchoice) && ((tosstime) ? oneoffdisplay(5) : decision(5));
 
                     } } // Player chooses 5
                 >
@@ -568,8 +573,7 @@ function App() {
                 <TouchableOpacity
                     style={styles.button}
                     onPress={() => {
-                        (tossSideSelected) && ((tosstime) ? oneoffdisplay(6) : decision(6));
-
+                        (tossSideSelected) && (tosswonchoice) && ((tosstime) ? oneoffdisplay(6) : decision(6));
                     } } // Player chooses 6
                 >
                     <Text style={styles.buttonText}>
