@@ -60,7 +60,6 @@ function App() {
         }
     },[reset]);
 
-
     useEffect(() => {
         const initializeSyncStorage = async () => {
             try {
@@ -475,8 +474,8 @@ function App() {
                         onPress={() => {
                             setinnings("First");
                             setplayerDecision("Batting");
+                            settosswonchoice(false);
                             settosstime(false);
-                            settosswonchoice(true);
                         } }
                     >
                         <Text style={styles.buttonText}>
@@ -490,8 +489,8 @@ function App() {
                         onPress={() => {
                             setinnings("First");
                             setplayerDecision("Bowling");
-                            settosstime(false);
                             settosswonchoice(true);
+                            settosstime(false);
                         } }>
                         <Text style={styles.buttonText}>
                             Bowling
@@ -517,8 +516,7 @@ function App() {
                 <TouchableOpacity
                     style={styles.button}
                     onPress={() => {
-                        (tossSideSelected) && (tosswonchoice) && ((tosstime) ? oneoffdisplay(1) : decision(1));
-
+                         (tossSideSelected) && (tosswonchoice) && ((tosstime) ? oneoffdisplay(1) : decision(1));
                     } } // Player chooses 1
                 >
                     <Text style={styles.buttonText}>
@@ -529,7 +527,6 @@ function App() {
                     style={styles.button}
                     onPress={() => {
                         (tossSideSelected) && (tosswonchoice) && ((tosstime) ? oneoffdisplay(2) : decision(2));
-
                     } } // Player chooses 2
                 >
                     <Text style={styles.buttonText}>
@@ -551,7 +548,7 @@ function App() {
                 <TouchableOpacity
                     style={styles.button}
                     onPress={() => {
-                        (tossSideSelected) && (tosswonchoice) && ((tosstime) ? oneoffdisplay(4) : decision(4));
+                         (tossSideSelected) && (tosswonchoice) && ((tosstime) ? oneoffdisplay(4) : decision(4));
 
                     } } // Player chooses 4
                 >
@@ -574,6 +571,7 @@ function App() {
                     style={styles.button}
                     onPress={() => {
                         (tossSideSelected) && (tosswonchoice) && ((tosstime) ? oneoffdisplay(6) : decision(6));
+
                     } } // Player chooses 6
                 >
                     <Text style={styles.buttonText}>
@@ -755,15 +753,3 @@ const styles = StyleSheet.create({
 
 // Export the App component as default
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
