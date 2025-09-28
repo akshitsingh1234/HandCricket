@@ -488,7 +488,7 @@ function App() {
                         onPress={() => {
                             setinnings("First");
                             setplayerDecision("Batting");
-                            settosswonchoice(false);
+                            settosswonchoice(true);
                             settosstime(false);
                         } }
                     >
