@@ -166,6 +166,10 @@ function App() {
              SyncStorage.set('num-won',aa.num_won);
         aa.num_won=SyncStorage.get('num-won');
         aa.percent_won=SyncStorage.get('per-won');
+        SyncStorage.set('num-lost',aa.num_lost);
+        SyncStorage.set('num-drawn',aa.num_drawn);
+
+
             tossdefault();
         }
 
@@ -181,6 +185,8 @@ function App() {
         aa.num_played=SyncStorage.get('num-pla');
              SyncStorage.set('num-lost',aa.num_lost);
         aa.num_lost=SyncStorage.get('num-lost');
+        SyncStorage.set('num-drawn',aa.num_drawn);
+         SyncStorage.set('num-won',aa.num_won);
         aa.percent_won=SyncStorage.get('per-won');
             tossdefault();
         }
@@ -235,6 +241,8 @@ function App() {
         aa.num_played=SyncStorage.get('num-pla');
                     SyncStorage.set('num-lost',aa.num_lost);
         aa.num_lost=SyncStorage.get('num-lost');
+        SyncStorage.set('num-drawn',aa.num_drawn);
+        SyncStorage.set('num-won',aa.num_won);
         aa.percent_won=SyncStorage.get('per-won');
                 }
 
@@ -247,6 +255,8 @@ function App() {
         aa.num_played=SyncStorage.get('num-pla');
                     SyncStorage.set('num-drawn',aa.num_drawn);
         aa.num_drawn=SyncStorage.get('num-drawn');
+        SyncStorage.set('num-won',aa.num_won);
+        SyncStorage.set('num-lost',aa.num_lost);
         aa.percent_won=SyncStorage.get('per-won');
                 }
                 tossdefault();
@@ -273,6 +283,8 @@ function App() {
         aa.num_played=SyncStorage.get('num-pla');
                     SyncStorage.set('num-won',aa.num_won);
         aa.num_won=SyncStorage.get('num-won');
+                  SyncStorage.set('num-lost',aa.num_lost);
+        SyncStorage.set('num-drawn',aa.num_drawn);
         aa.percent_won=SyncStorage.get('per-won');
                 }
 
@@ -284,6 +296,8 @@ function App() {
         aa.num_played=SyncStorage.get('num-pla');
                     SyncStorage.set('num-drawn',aa.num_drawn);
         aa.num_drawn=SyncStorage.get('num-drawn');
+        SyncStorage.set('num-won',aa.num_won);
+        SyncStorage.set('num-lost',aa.num_lost);
         aa.percent_won=SyncStorage.get('per-won');
                 }
                 tossdefault();
